@@ -12,8 +12,23 @@ class FiltersViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
 
+//  let filterCategories = [
+//    "Categories",
+//    "Sort",
+//    "Distance",
+//    "Deals",
+//  ]
+
+  var filters = [
+    CategoriesFilter()
+
+  ]
+
   override func viewDidLoad() {
     super.viewDidLoad()
+    tableView.delegate = self
+    tableView.dataSource = self
+
 
     // Do any additional setup after loading the view.
   }
@@ -39,5 +54,26 @@ class FiltersViewController: UIViewController {
    // Pass the selected object to the new view controller.
    }
    */
-  
+
+}
+
+extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return filters.count
+  }
+
+
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return filters[section].name
+  }
+
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return filters[section].categories.count
+  }
+
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell") as! SwitchCell
+    cell.switchLabel.text = filters[indexPath.section].categories[indexPath.row].title
+    return cell
+  }
 }
