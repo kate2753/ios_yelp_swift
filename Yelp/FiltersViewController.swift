@@ -21,16 +21,14 @@ class FiltersViewController: UIViewController {
 
   var filters = [
     CategoriesFilter()
-
   ]
+
+  var filterSelections = [Filter:[String:Bool]]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
-
-
-    // Do any additional setup after loading the view.
   }
 
   override func didReceiveMemoryWarning() {
@@ -45,6 +43,7 @@ class FiltersViewController: UIViewController {
   @IBAction func onSearchButton(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion:nil)
   }
+
   /*
    // MARK: - Navigation
 
@@ -62,7 +61,6 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
     return filters.count
   }
 
-
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return filters[section].name
   }
@@ -73,7 +71,24 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell") as! SwitchCell
-    cell.switchLabel.text = filters[indexPath.section].categories[indexPath.row].title
+    let filter = filters[indexPath.section]
+    cell.filter = filter
+    cell.filterCategory = filter.categories[indexPath.row]
+    cell.onSwitch.on = filterSelections[filter]?[cell.filterCategory!.name] ?? false
+    cell.delegate = self
     return cell
+  }
+}
+
+
+extension FiltersViewController: SwitchCellDelegate {
+  func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
+//    filterSelections[switchCell.filter!]?[switchCell.filterCategory!.name] = value
+    if filterSelections[switchCell.filter!] == nil {
+      filterSelections[switchCell.filter!] = [switchCell.filterCategory!.name: value]
+    } else {
+      filterSelections[switchCell.filter!]![switchCell.filterCategory!.name] = value
+    }
+    print(filterSelections)
   }
 }
