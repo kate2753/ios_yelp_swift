@@ -12,6 +12,7 @@ class FilterPreferences: NSObject {
   var categories: [String] = []
   var sort: YelpSortMode?
   var deals: Bool = false
+  var distance: Double?
 
   func updateFilterPreference(filter: Filter, filterCategory: FilterCategory, isOn: Bool) {
     if filter is CategoriesFilter {
@@ -31,6 +32,12 @@ class FilterPreferences: NSObject {
       }
     } else if filter is DealsFilter {
       deals = isOn
+    } else if filter is DistanceFilter {
+      if let distance = Double(filterCategory.value) {
+        self.distance = distance
+      } else {
+        self.distance = nil
+      }
     }
   }
 
@@ -45,6 +52,13 @@ class FilterPreferences: NSObject {
       }
     } else if filter is DealsFilter {
       return deals
+    } else if filter is DistanceFilter {
+      if let distance = Double(filterCategory.value) {
+        return self.distance == distance
+      } else {
+        // Auto filter
+        return self.distance == nil
+      }
     }
 
     return false

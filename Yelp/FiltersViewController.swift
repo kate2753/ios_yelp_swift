@@ -19,6 +19,7 @@ class FiltersViewController: UIViewController {
 
   var filters = [
     DealsFilter(),
+    DistanceFilter(),
     SortFilter(),
     CategoriesFilter()
   ]

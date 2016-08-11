@@ -22,7 +22,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 120
 
-    updateBusinesses(nil, categories: nil, deals: nil)
+    updateBusinesses(nil, categories: nil, deals: nil, distance: nil)
   }
 
   override func didReceiveMemoryWarning() {
@@ -50,8 +50,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     filtersViewController.filterPreferences = filterPreferences
   }
 
-  private func updateBusinesses(sort: YelpSortMode?, categories: [String]?, deals: Bool? ) -> Void {
-    Business.searchWithTerm("Restaurants", sort: sort, categories: categories, deals: deals) {
+  private func updateBusinesses(sort: YelpSortMode?, categories: [String]?, deals: Bool?, distance: Double? ) -> Void {
+    Business.searchWithTerm("Restaurants", sort: sort, categories: categories, deals: deals, distance: distance) {
       (businesses: [Business]!, error: NSError!) -> Void in
       self.businesses = businesses
       self.tableView.reloadData()
@@ -61,6 +61,11 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
 
 extension BusinessesViewController: FiltersViewControllerDelegate {
   func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filterPreferences: FilterPreferences) {
-    updateBusinesses(filterPreferences.sort, categories: filterPreferences.categories, deals: filterPreferences.deals)
+    updateBusinesses(
+      filterPreferences.sort,
+      categories: filterPreferences.categories,
+      deals: filterPreferences.deals,
+      distance: filterPreferences.distance
+    )
   }
 }
