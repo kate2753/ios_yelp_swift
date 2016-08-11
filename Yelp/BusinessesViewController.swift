@@ -22,6 +22,7 @@ class BusinessesViewController: UIViewController {
     tableView.dataSource = self
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 120
+    tableView.separatorInset = UIEdgeInsetsZero
 
     let searchBar = UISearchBar()
     searchBar.delegate = self

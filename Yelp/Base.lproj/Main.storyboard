@@ -66,7 +66,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thai, Seafood, Salad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrR-wG-1Tg">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thai, Seafood, Salad" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrR-wG-1Tg">
                                                     <rect key="frame" x="82" y="70" width="125" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.4429537521815009" green="0.4429537521815009" blue="0.4429537521815009" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,6 +88,7 @@
                                                 <constraint firstItem="ham-Ws-uJw" firstAttribute="leading" secondItem="mcd-ik-4qs" secondAttribute="trailing" constant="9" id="L1W-nm-2KF"/>
                                                 <constraint firstItem="qrR-wG-1Tg" firstAttribute="top" secondItem="ham-Ws-uJw" secondAttribute="bottom" constant="3" id="Ndt-w0-W9a"/>
                                                 <constraint firstItem="mcd-ik-4qs" firstAttribute="top" secondItem="4Oe-yy-4EQ" secondAttribute="top" constant="8" id="OT6-e5-EyE"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qrR-wG-1Tg" secondAttribute="trailing" constant="8" id="Oav-D2-suR"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mcd-ik-4qs" secondAttribute="bottom" constant="8" id="T1j-bu-WkL"/>
                                                 <constraint firstItem="mcd-ik-4qs" firstAttribute="leading" secondItem="4Oe-yy-4EQ" secondAttribute="leading" constant="8" id="VYu-U9-sG3"/>
                                                 <constraint firstItem="S96-fI-M15" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vJ2-2G-sjO" secondAttribute="trailing" constant="8" id="aqV-gf-8ap"/>

@@ -28,6 +28,9 @@ class SwitchCell: UITableViewCell {
    override func awakeFromNib() {
     super.awakeFromNib()
 
+    self.layoutMargins = UIEdgeInsetsZero
+    self.preservesSuperviewLayoutMargins = false
+
     onSwitch.addTarget(self, action: #selector(SwitchCell.switchValueChanged) , forControlEvents: UIControlEvents.ValueChanged)
   }
 

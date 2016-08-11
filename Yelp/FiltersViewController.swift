@@ -32,6 +32,7 @@ class FiltersViewController: UIViewController {
     tableView.dataSource = self
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 200
+    tableView.separatorInset = UIEdgeInsetsZero
   }
 
   override func didReceiveMemoryWarning() {

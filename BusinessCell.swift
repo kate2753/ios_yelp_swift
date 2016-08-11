@@ -35,6 +35,9 @@ class BusinessCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     thumbImageView.layer.cornerRadius = 5
+
+    self.layoutMargins = UIEdgeInsetsZero
+    self.preservesSuperviewLayoutMargins = false
   }
 
   override func setSelected(selected: Bool, animated: Bool) {
