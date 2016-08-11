@@ -11,6 +11,7 @@ import UIKit
 class FilterPreferences: NSObject {
   var categories: [String] = []
   var sort: YelpSortMode?
+  var deals: Bool = false
 
   func updateFilterPreference(filter: Filter, filterCategory: FilterCategory, isOn: Bool) {
     if filter is CategoriesFilter {
@@ -28,6 +29,8 @@ class FilterPreferences: NSObject {
       } else {
         sort = nil
       }
+    } else if filter is DealsFilter {
+      deals = isOn
     }
   }
 
@@ -40,6 +43,8 @@ class FilterPreferences: NSObject {
       } else {
         return filterCategory.value == "\(sort!.rawValue)"
       }
+    } else if filter is DealsFilter {
+      return deals
     }
 
     return false

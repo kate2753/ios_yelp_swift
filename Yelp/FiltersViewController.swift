@@ -17,14 +17,8 @@ class FiltersViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   weak var delegate: FiltersViewControllerDelegate?
 
-  //  let filterCategories = [
-  //    "Categories",
-  //    "Sort",
-  //    "Distance",
-  //    "Deals",
-  //  ]
-
   var filters = [
+    DealsFilter(),
     SortFilter(),
     CategoriesFilter()
   ]

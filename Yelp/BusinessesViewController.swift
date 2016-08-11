@@ -61,6 +61,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
 
 extension BusinessesViewController: FiltersViewControllerDelegate {
   func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filterPreferences: FilterPreferences) {
-    updateBusinesses(filterPreferences.sort, categories: filterPreferences.categories, deals: nil)
+    updateBusinesses(filterPreferences.sort, categories: filterPreferences.categories, deals: filterPreferences.deals)
   }
 }
