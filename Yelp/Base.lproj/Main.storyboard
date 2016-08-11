@@ -17,15 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="115" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pyq-Vl-JO0">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="123" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pyq-Vl-JO0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="115" id="ywp-XX-TJm" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="115"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="123" id="ywp-XX-TJm" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ywp-XX-TJm" id="4Oe-yy-4EQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mcd-ik-4qs">
@@ -88,13 +88,13 @@
                                                 <constraint firstItem="ham-Ws-uJw" firstAttribute="leading" secondItem="mcd-ik-4qs" secondAttribute="trailing" constant="9" id="L1W-nm-2KF"/>
                                                 <constraint firstItem="qrR-wG-1Tg" firstAttribute="top" secondItem="ham-Ws-uJw" secondAttribute="bottom" constant="3" id="Ndt-w0-W9a"/>
                                                 <constraint firstItem="mcd-ik-4qs" firstAttribute="top" secondItem="4Oe-yy-4EQ" secondAttribute="top" constant="8" id="OT6-e5-EyE"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mcd-ik-4qs" secondAttribute="bottom" constant="15" id="T1j-bu-WkL"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mcd-ik-4qs" secondAttribute="bottom" constant="8" id="T1j-bu-WkL"/>
                                                 <constraint firstItem="mcd-ik-4qs" firstAttribute="leading" secondItem="4Oe-yy-4EQ" secondAttribute="leading" constant="8" id="VYu-U9-sG3"/>
                                                 <constraint firstItem="S96-fI-M15" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vJ2-2G-sjO" secondAttribute="trailing" constant="8" id="aqV-gf-8ap"/>
                                                 <constraint firstItem="G26-GG-bry" firstAttribute="leading" secondItem="mcd-ik-4qs" secondAttribute="trailing" constant="8" id="bKZ-d5-Bnr"/>
                                                 <constraint firstAttribute="trailing" secondItem="ham-Ws-uJw" secondAttribute="trailing" constant="74" id="crX-6q-4hr"/>
                                                 <constraint firstItem="ham-Ws-uJw" firstAttribute="top" secondItem="G26-GG-bry" secondAttribute="bottom" constant="5" id="eN4-II-IMz"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qrR-wG-1Tg" secondAttribute="bottom" constant="15" id="jav-lV-xab"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qrR-wG-1Tg" secondAttribute="bottom" constant="8" id="jav-lV-xab"/>
                                                 <constraint firstItem="vJ2-2G-sjO" firstAttribute="top" secondItem="4Oe-yy-4EQ" secondAttribute="top" constant="8" id="nJo-hz-VfO"/>
                                                 <constraint firstItem="Yva-wZ-trK" firstAttribute="centerY" secondItem="G26-GG-bry" secondAttribute="centerY" id="sgx-zP-AR1"/>
                                                 <constraint firstItem="S96-fI-M15" firstAttribute="top" secondItem="4Oe-yy-4EQ" secondAttribute="top" constant="8" id="sjP-mL-n4b"/>

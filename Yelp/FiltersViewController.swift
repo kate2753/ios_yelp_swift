@@ -29,6 +29,8 @@ class FiltersViewController: UIViewController {
     super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 200
   }
 
   override func didReceiveMemoryWarning() {
