@@ -14,7 +14,7 @@ class SortFilter: Filter {
 
     categories.append(FilterCategory(title: "Best Match", value: "\(YelpSortMode.BestMatched.rawValue)"))
     categories.append(FilterCategory(title: "Distance", value: "\(YelpSortMode.Distance.rawValue)"))
-    categories.append(FilterCategory(title: "HighestRated", value: "\(YelpSortMode.HighestRated.rawValue)"))
+    categories.append(FilterCategory(title: "Highest Rated", value: "\(YelpSortMode.HighestRated.rawValue)"))
 
     super.init(name: "Sort By", categories: categories)
   }
