@@ -8,22 +8,27 @@
 
 import UIKit
 
+@objc protocol FiltersViewControllerDelegate {
+  optional func filtersViewController(filtersViewController:FiltersViewController, didUpdateFilters:FilterPreferences)
+}
+
 class FiltersViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
+  weak var delegate: FiltersViewControllerDelegate?
 
-//  let filterCategories = [
-//    "Categories",
-//    "Sort",
-//    "Distance",
-//    "Deals",
-//  ]
+  //  let filterCategories = [
+  //    "Categories",
+  //    "Sort",
+  //    "Distance",
+  //    "Deals",
+  //  ]
 
   var filters = [
     CategoriesFilter()
   ]
 
-  var filterSelections = [Filter:[String:Bool]]()
+  var filterPreferences = FilterPreferences()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,19 +48,9 @@ class FiltersViewController: UIViewController {
   }
 
   @IBAction func onSearchButton(sender: AnyObject) {
+    delegate?.filtersViewController?(self, didUpdateFilters: filterPreferences)
     dismissViewControllerAnimated(true, completion:nil)
   }
-
-  /*
-   // MARK: - Navigation
-
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
-
 }
 
 extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
@@ -74,9 +69,10 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell") as! SwitchCell
     let filter = filters[indexPath.section]
+    let filterCategory = filter.categories[indexPath.row]
     cell.filter = filter
-    cell.filterCategory = filter.categories[indexPath.row]
-    cell.onSwitch.on = filterSelections[filter]?[cell.filterCategory!.name] ?? false
+    cell.filterCategory = filterCategory
+    cell.onSwitch.on = filterPreferences.isFilterCategoryOn(filter, filterCategory: filterCategory)
     cell.delegate = self
     return cell
   }
@@ -85,12 +81,6 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension FiltersViewController: SwitchCellDelegate {
   func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
-//    filterSelections[switchCell.filter!]?[switchCell.filterCategory!.name] = value
-    if filterSelections[switchCell.filter!] == nil {
-      filterSelections[switchCell.filter!] = [switchCell.filterCategory!.name: value]
-    } else {
-      filterSelections[switchCell.filter!]![switchCell.filterCategory!.name] = value
-    }
-    print(filterSelections)
+    filterPreferences.updateFilterPreference(switchCell.filter!, filterCategory: switchCell.filterCategory!, isOn: value)
   }
 }

@@ -29,7 +29,6 @@ class CategoriesFilter: Filter {
             }
           }
         } catch {
-          print("error")
         }
       }
     }
