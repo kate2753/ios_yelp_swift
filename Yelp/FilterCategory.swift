@@ -10,10 +10,10 @@ import Foundation
 
 class FilterCategory: NSObject {
   let title: String
-  let name: String
+  let value: String
 
-  init(title: String, name:String){
+  init(title: String, value :String){
     self.title = title
-    self.name = name
+    self.value = value
   }
 }

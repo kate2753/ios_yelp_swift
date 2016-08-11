@@ -24,7 +24,7 @@ class CategoriesFilter: Filter {
             dictionary.forEach() { category in
               let title = category["title"] as! String
               let name = category["alias"] as! String
-              let filterCategory = FilterCategory(title: title, name: name)
+              let filterCategory = FilterCategory(title: title, value: name)
               categories.append(filterCategory)
             }
           }

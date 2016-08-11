@@ -25,6 +25,7 @@ class FiltersViewController: UIViewController {
   //  ]
 
   var filters = [
+    SortFilter(),
     CategoriesFilter()
   ]
 
@@ -82,5 +83,6 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
 extension FiltersViewController: SwitchCellDelegate {
   func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
     filterPreferences.updateFilterPreference(switchCell.filter!, filterCategory: switchCell.filterCategory!, isOn: value)
+    tableView.reloadData()
   }
 }
