@@ -23,7 +23,6 @@ class FiltersViewController: UIViewController {
     SortFilter(),
     CategoriesFilter()
   ]
-
   var filterPreferences = FilterPreferences()
 
   override func viewDidLoad() {
@@ -55,6 +54,13 @@ class FiltersViewController: UIViewController {
       tableView.reloadSections( NSIndexSet(index: collapsedFilterCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
     }
   }
+
+  func didTapSeeAllSection(sender: UITapGestureRecognizer) {
+    if let seeAllCell = sender.view as? SeeAllCell {
+      seeAllCell.filter?.areAllCategoriesVisible = true
+      tableView.reloadSections( NSIndexSet(index: seeAllCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
+    }
+  }
 }
 
 extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
@@ -68,11 +74,28 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let filter = filters[section]
-    return filter.isCollapsed ? 1 : filter.categories.count
+    if filter.areAllCategoriesVisible {
+      return filter.isCollapsed ? 1 : filter.categories.count
+    } else {
+      // number of categories we want to show + 1 cell for "see all" cell
+      return filter.numCategoriesVisibleByDefault + 1
+    }
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let filter = filters[indexPath.section]
+
+
+    if !filter.areAllCategoriesVisible && indexPath.row == filter.numCategoriesVisibleByDefault {
+      let cell = tableView.dequeueReusableCellWithIdentifier("SeeAllCell") as! SeeAllCell
+      cell.filter = filter
+      cell.sectionIndex = indexPath.section
+
+      let seeAllSectionTap = UITapGestureRecognizer(target: self, action: #selector(FiltersViewController.didTapSeeAllSection))
+      cell.addGestureRecognizer(seeAllSectionTap)
+
+      return cell
+    }
 
     if filter.isCollapsible && filter.isCollapsed {
       let cell = tableView.dequeueReusableCellWithIdentifier("CollapsedFilterCell") as! CollapsedFilterCell

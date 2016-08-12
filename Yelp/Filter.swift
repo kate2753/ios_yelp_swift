@@ -19,6 +19,8 @@ class Filter: NSObject {
     }
   }
   var isCollapsible = false
+  let numCategoriesVisibleByDefault = 5
+  var areAllCategoriesVisible = true
 
   init(title: String) {
     self.title = title

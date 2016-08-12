@@ -31,5 +31,6 @@ class CategoriesFilter: Filter {
     }
 
     self.categories = categories
+    self.areAllCategoriesVisible = false
   }
 }
