@@ -52,7 +52,7 @@ class FiltersViewController: UIViewController {
   func didTapCollapsedSection(sender: UITapGestureRecognizer) {
     if let collapsedFilterCell = sender.view as? CollapsedFilterCell {
       collapsedFilterCell.filter?.isCollapsed = false
-      tableView.reloadData()
+      tableView.reloadSections( NSIndexSet(index: collapsedFilterCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
     }
   }
 }
@@ -78,6 +78,7 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
       let cell = tableView.dequeueReusableCellWithIdentifier("CollapsedFilterCell") as! CollapsedFilterCell
       cell.filterPreferences = filterPreferences
       cell.filter = filter
+      cell.sectionIndex = indexPath.section
 
       let collapsedSectionTap = UITapGestureRecognizer(target: self, action: #selector(FiltersViewController.didTapCollapsedSection))
       cell.addGestureRecognizer(collapsedSectionTap)
@@ -88,6 +89,7 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
       cell.filterPreferences = filterPreferences
       cell.filterCategory = filter.categories[indexPath.row]
       cell.delegate = self
+      cell.sectionIndex = indexPath.section
       return cell
     }
   }
@@ -101,6 +103,6 @@ extension FiltersViewController: SwitchCellDelegate {
     if filter.isCollapsible {
       filter.isCollapsed = true
     }
-    tableView.reloadData()
+    tableView.reloadSections( NSIndexSet(index: switchCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
   }
 }

@@ -27,6 +27,7 @@ class SwitchCell: UITableViewCell {
       }
     }
   }
+  var sectionIndex: Int?
 
    override func awakeFromNib() {
     super.awakeFromNib()

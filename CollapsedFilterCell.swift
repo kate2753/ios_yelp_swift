@@ -13,6 +13,8 @@ class CollapsedFilterCell: UITableViewCell {
   @IBOutlet weak var selectedFilterTitle: UILabel!
 
   var filterPreferences: FilterPreferences?
+  var sectionIndex: Int?
+
   weak var filter: Filter? {
     didSet {
       if let filter = filter {
