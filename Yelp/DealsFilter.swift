@@ -10,8 +10,11 @@ import UIKit
 
 class DealsFilter: Filter {
   init() {
+    super.init(title: "Deals")
+
     var categories = [FilterCategory]()
-    categories.append(FilterCategory(title: "Offering a Deal", value: "deal"))
-    super.init(name: "Deals", categories: categories)
+    categories.append(FilterCategory(title: "Offering a Deal", value: "deal", filter: self))
+
+    self.categories = categories
   }
 }

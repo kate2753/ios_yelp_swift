@@ -18,10 +18,13 @@ class SwitchCell: UITableViewCell {
   @IBOutlet weak var onSwitch: UISwitch!
 
   weak var delegate: SwitchCellDelegate?
-  var filter: Filter?
+  var filterPreferences: FilterPreferences?
   var filterCategory: FilterCategory? {
     didSet {
-      switchLabel.text = filterCategory?.title
+      if let filterCategory = filterCategory {
+        switchLabel.text = filterCategory.title
+        onSwitch.on = filterPreferences?.isFilterCategoryOn(filterCategory) ?? false
+      }
     }
   }
 

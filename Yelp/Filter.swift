@@ -9,11 +9,18 @@
 import Foundation
 
 class Filter: NSObject {
-  let name: String
-  let categories: [FilterCategory]
+  let title: String
+  var categories: [FilterCategory] = []
+  var isCollapsed: Bool = false {
+    didSet {
+      if !isCollapsible && isCollapsed {
+        isCollapsed = false
+      }
+    }
+  }
+  var isCollapsible = false
 
-  init(name: String, categories: [FilterCategory]) {
-    self.name = name
-    self.categories = categories
+  init(title: String) {
+    self.title = title
   }
 }

@@ -11,9 +11,11 @@ import Foundation
 class FilterCategory: NSObject {
   let title: String
   let value: String
+  let filter: Filter
 
-  init(title: String, value :String){
+  init(title: String, value :String, filter: Filter){
     self.title = title
     self.value = value
+    self.filter = filter
   }
 }

@@ -48,6 +48,13 @@ class FiltersViewController: UIViewController {
     delegate?.filtersViewController?(self, didUpdateFilters: filterPreferences)
     dismissViewControllerAnimated(true, completion:nil)
   }
+
+  func didTapCollapsedSection(sender: UITapGestureRecognizer) {
+    if let collapsedFilterCell = sender.view as? CollapsedFilterCell {
+      collapsedFilterCell.filter?.isCollapsed = false
+      tableView.reloadData()
+    }
+  }
 }
 
 extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
@@ -56,29 +63,44 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return filters[section].name
+    return filters[section].title
   }
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return filters[section].categories.count
+    let filter = filters[section]
+    return filter.isCollapsed ? 1 : filter.categories.count
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell") as! SwitchCell
     let filter = filters[indexPath.section]
-    let filterCategory = filter.categories[indexPath.row]
-    cell.filter = filter
-    cell.filterCategory = filterCategory
-    cell.onSwitch.on = filterPreferences.isFilterCategoryOn(filter, filterCategory: filterCategory)
-    cell.delegate = self
-    return cell
+
+    if filter.isCollapsible && filter.isCollapsed {
+      let cell = tableView.dequeueReusableCellWithIdentifier("CollapsedFilterCell") as! CollapsedFilterCell
+      cell.filterPreferences = filterPreferences
+      cell.filter = filter
+
+      let collapsedSectionTap = UITapGestureRecognizer(target: self, action: #selector(FiltersViewController.didTapCollapsedSection))
+      cell.addGestureRecognizer(collapsedSectionTap)
+
+      return cell
+    } else {
+      let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell") as! SwitchCell
+      cell.filterPreferences = filterPreferences
+      cell.filterCategory = filter.categories[indexPath.row]
+      cell.delegate = self
+      return cell
+    }
   }
 }
 
 
 extension FiltersViewController: SwitchCellDelegate {
   func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
-    filterPreferences.updateFilterPreference(switchCell.filter!, filterCategory: switchCell.filterCategory!, isOn: value)
+    filterPreferences.updateFilterPreference(switchCell.filterCategory!, isOn: value)
+    let filter = switchCell.filterCategory!.filter
+    if filter.isCollapsible {
+      filter.isCollapsed = true
+    }
     tableView.reloadData()
   }
 }

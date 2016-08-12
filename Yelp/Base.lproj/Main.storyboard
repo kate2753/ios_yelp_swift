@@ -151,30 +151,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G9N-2N-Kmm">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="53" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G9N-2N-Kmm">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="53" id="fvF-dQ-94g" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="53"/>
+                                        <rect key="frame" x="0.0" y="114" width="320" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fvF-dQ-94g" id="psd-rA-b0d">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nX-Oj-W7t">
-                                                    <rect key="frame" x="15" y="10" width="42" height="31"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest Rated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nX-Oj-W7t">
+                                                    <rect key="frame" x="15" y="10" width="109" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uje-Ge-qgC">
-                                                    <rect key="frame" x="256" y="10" width="51" height="31"/>
+                                                    <rect key="frame" x="256" y="11" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="uje-Ge-qgC" secondAttribute="trailing" constant="15" id="KRP-Ag-Ihm"/>
-                                                <constraint firstAttribute="bottom" secondItem="7nX-Oj-W7t" secondAttribute="bottom" constant="11" id="M6d-dt-Iwr"/>
+                                                <constraint firstAttribute="bottom" secondItem="7nX-Oj-W7t" secondAttribute="bottom" constant="10" id="M6d-dt-Iwr"/>
                                                 <constraint firstItem="7nX-Oj-W7t" firstAttribute="top" secondItem="psd-rA-b0d" secondAttribute="top" constant="10" id="OhK-qF-zg8"/>
                                                 <constraint firstItem="7nX-Oj-W7t" firstAttribute="leading" secondItem="psd-rA-b0d" secondAttribute="leading" constant="15" id="YZ0-dA-FP4"/>
                                                 <constraint firstItem="uje-Ge-qgC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7nX-Oj-W7t" secondAttribute="trailing" constant="10" id="e3n-rR-KxY"/>
@@ -184,6 +184,40 @@
                                         <connections>
                                             <outlet property="onSwitch" destination="uje-Ge-qgC" id="3YB-gh-QSQ"/>
                                             <outlet property="switchLabel" destination="7nX-Oj-W7t" id="r6C-xB-A77"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollapsedFilterCell" id="6X9-bh-jiH" customClass="CollapsedFilterCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="167" width="320" height="53"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6X9-bh-jiH" id="Nfe-qf-TUs">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expand" translatesAutoresizingMaskIntoConstraints="NO" id="85w-FX-zyw">
+                                                    <rect key="frame" x="285" y="16" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="6bu-er-0xM"/>
+                                                        <constraint firstAttribute="height" constant="20" id="Pk7-xP-rg2"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest Rated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTq-Nm-nqA">
+                                                    <rect key="frame" x="15" y="10" width="109" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="85w-FX-zyw" firstAttribute="centerY" secondItem="HTq-Nm-nqA" secondAttribute="centerY" id="4Em-BF-E4t"/>
+                                                <constraint firstItem="HTq-Nm-nqA" firstAttribute="leading" secondItem="Nfe-qf-TUs" secondAttribute="leading" constant="15" id="Pix-qB-BgX"/>
+                                                <constraint firstAttribute="bottom" secondItem="HTq-Nm-nqA" secondAttribute="bottom" constant="10" id="iNP-QZ-zDg"/>
+                                                <constraint firstItem="85w-FX-zyw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HTq-Nm-nqA" secondAttribute="trailing" constant="15" id="qA4-S3-R5S"/>
+                                                <constraint firstAttribute="trailing" secondItem="85w-FX-zyw" secondAttribute="trailing" constant="15" id="v9S-1C-szg"/>
+                                                <constraint firstItem="HTq-Nm-nqA" firstAttribute="top" secondItem="Nfe-qf-TUs" secondAttribute="top" constant="10" id="yR3-Gu-twQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="selectedFilterTitle" destination="HTq-Nm-nqA" id="Ouy-TQ-uly"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -254,4 +288,7 @@
             <point key="canvasLocation" x="1336" y="211"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Expand" width="16" height="16"/>
+    </resources>
 </document>

@@ -10,11 +10,12 @@ import UIKit
 
 class FilterPreferences: NSObject {
   var categories: [String] = []
-  var sort: YelpSortMode?
+  var sort: YelpSortMode? = YelpSortMode.BestMatched
   var deals: Bool = false
   var distance: Double?
 
-  func updateFilterPreference(filter: Filter, filterCategory: FilterCategory, isOn: Bool) {
+  func updateFilterPreference(filterCategory: FilterCategory, isOn: Bool) {
+    let filter = filterCategory.filter
     if filter is CategoriesFilter {
       let idxOfCategory = categories.indexOf(filterCategory.value)
       if isOn && idxOfCategory == nil {
@@ -41,7 +42,8 @@ class FilterPreferences: NSObject {
     }
   }
 
-  func isFilterCategoryOn(filter: Filter, filterCategory: FilterCategory) -> Bool {
+  func isFilterCategoryOn(filterCategory: FilterCategory) -> Bool {
+    let filter = filterCategory.filter
     if filter is CategoriesFilter {
       return categories.contains(filterCategory.value)
     } else if filter is SortFilter {
@@ -62,5 +64,25 @@ class FilterPreferences: NSObject {
     }
 
     return false
+  }
+
+  func getSelectedCategoryTitle(filter:Filter) -> String? {
+    var selectedCategoryTitle: String? = filter.categories.first?.title
+    var selectedFilterValue: String? = nil
+
+    if filter is DistanceFilter {
+      selectedFilterValue = distance == nil ? nil : "\(distance!)"
+    } else if filter is SortFilter {
+      selectedFilterValue = sort == nil ? "" : "\(sort!.rawValue)"
+    }
+
+
+    filter.categories.forEach() { filterCategory in
+      if filterCategory.value == selectedFilterValue {
+        selectedCategoryTitle = filterCategory.title
+      }
+    }
+
+    return selectedCategoryTitle
   }
 }

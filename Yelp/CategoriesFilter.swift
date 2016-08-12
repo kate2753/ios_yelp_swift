@@ -10,11 +10,8 @@ import UIKit
 
 class CategoriesFilter: Filter {
   init() {
-    super.init(name: "Categories", categories: CategoriesFilter.loadCategories())
-  }
-
-  private static func loadCategories() -> [FilterCategory] {
-    var categories: [FilterCategory] = []
+    super.init(title: "Categories")
+    var categories = [FilterCategory]()
 
     if let path = NSBundle.mainBundle().pathForResource("categories", ofType: "json") {
       if let data = NSData(contentsOfFile: path) {
@@ -24,7 +21,7 @@ class CategoriesFilter: Filter {
             dictionary.forEach() { category in
               let title = category["title"] as! String
               let name = category["alias"] as! String
-              let filterCategory = FilterCategory(title: title, value: name)
+              let filterCategory = FilterCategory(title: title, value: name, filter: self)
               categories.append(filterCategory)
             }
           }
@@ -33,6 +30,6 @@ class CategoriesFilter: Filter {
       }
     }
 
-    return categories
+    self.categories = categories
   }
 }

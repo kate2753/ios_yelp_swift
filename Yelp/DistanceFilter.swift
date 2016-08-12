@@ -17,13 +17,17 @@ class DistanceFilter: Filter {
   ]
 
   init() {
+    super.init(title: "Distance")
+
     var categories = [FilterCategory]()
-    categories.append(FilterCategory(title: "Auto", value: ""))
+    categories.append(FilterCategory(title: "Auto", value: "", filter: self))
     supportedDistances.forEach() { title, distance in
-      categories.append(FilterCategory(title: title, value: "\(distance)"))
+      categories.append(FilterCategory(title: title, value: "\(distance)", filter: self))
     }
 
-    super.init(name: "Distance", categories: categories)
+    self.categories = categories
+    self.isCollapsible = true
+    self.isCollapsed = true
   }
 
   private class func milesToMeters(miles: Double) -> Double {

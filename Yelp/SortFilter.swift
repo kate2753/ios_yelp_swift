@@ -9,13 +9,22 @@
 import UIKit
 
 class SortFilter: Filter {
+  let sortCategories = [
+    "Best Match": YelpSortMode.BestMatched.rawValue,
+    "Distance":YelpSortMode.Distance.rawValue,
+    "Highest Rated":YelpSortMode.HighestRated.rawValue
+  ]
+
   init() {
+    super.init(title: "Sort By")
+
     var categories = [FilterCategory]()
+    sortCategories.forEach(){ title, value in
+      categories.append(FilterCategory(title: title, value: "\(value)", filter: self))
+    }
 
-    categories.append(FilterCategory(title: "Best Match", value: "\(YelpSortMode.BestMatched.rawValue)"))
-    categories.append(FilterCategory(title: "Distance", value: "\(YelpSortMode.Distance.rawValue)"))
-    categories.append(FilterCategory(title: "Highest Rated", value: "\(YelpSortMode.HighestRated.rawValue)"))
-
-    super.init(name: "Sort By", categories: categories)
+    self.categories = categories
+    self.isCollapsible = true
+    self.isCollapsed = true
   }
 }
