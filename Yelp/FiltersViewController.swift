@@ -102,7 +102,9 @@ extension FiltersViewController: SwitchCellDelegate {
     let filter = switchCell.filterCategory!.filter
     if filter.isCollapsible {
       filter.isCollapsed = true
+      tableView.reloadSections( NSIndexSet(index: switchCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
+    } else {
+      tableView.reloadData()
     }
-    tableView.reloadSections( NSIndexSet(index: switchCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
   }
 }
