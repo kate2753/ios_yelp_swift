@@ -21,6 +21,7 @@ class Filter: NSObject {
   var isCollapsible = false
   let numCategoriesVisibleByDefault = 5
   var areAllCategoriesVisible = true
+  var reusableCellIdentifier = "SwitchCell"
 
   init(title: String) {
     self.title = title

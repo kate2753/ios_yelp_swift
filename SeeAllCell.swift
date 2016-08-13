@@ -8,11 +8,7 @@
 
 import UIKit
 
-class SeeAllCell: UITableViewCell {
-
-  var filter:Filter?
-  var sectionIndex: Int?
-
+class SeeAllCell: FiltersTableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code

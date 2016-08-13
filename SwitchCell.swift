@@ -8,28 +8,20 @@
 
 import UIKit
 
-@objc protocol SwitchCellDelegate {
-  optional func switchCell(switchCell: SwitchCell, didChangeValue value: Bool)
-}
-
-class SwitchCell: UITableViewCell {
+class SwitchCell: FiltersTableViewCell {
 
   @IBOutlet weak var switchLabel: UILabel!
   @IBOutlet weak var onSwitch: UISwitch!
 
-  weak var delegate: SwitchCellDelegate?
-  var filterPreferences: FilterPreferences?
-  var filterCategory: FilterCategory? {
-    didSet {
-      if let filterCategory = filterCategory {
-        switchLabel.text = filterCategory.title
-        onSwitch.on = filterPreferences?.isFilterCategoryOn(filterCategory) ?? false
-      }
+  override func onFilterCategoryChanged(){
+    super.onFilterCategoryChanged()
+    if let filterCategory = filterCategory {
+      switchLabel.text = filterCategory.title
+      onSwitch.on = filterPreferences?.isFilterCategoryOn(filterCategory) ?? false
     }
   }
-  var sectionIndex: Int?
 
-   override func awakeFromNib() {
+  override func awakeFromNib() {
     super.awakeFromNib()
 
     self.layoutMargins = UIEdgeInsetsZero
@@ -43,7 +35,7 @@ class SwitchCell: UITableViewCell {
   }
 
   func switchValueChanged() {
-    delegate?.switchCell?(self, didChangeValue: onSwitch.on)
+    delegate?.filtersTableViewCell?(self, didChangeValue: onSwitch.on)
   }
   
 }

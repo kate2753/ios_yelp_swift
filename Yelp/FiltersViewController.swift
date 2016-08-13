@@ -49,9 +49,9 @@ class FiltersViewController: UIViewController {
   }
 
   func didTapCollapsedSection(sender: UITapGestureRecognizer) {
-    if let collapsedFilterCell = sender.view as? CollapsedFilterCell {
-      collapsedFilterCell.filter?.isCollapsed = false
-      tableView.reloadSections( NSIndexSet(index: collapsedFilterCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
+    if let filtersTableViewCell = sender.view as? FiltersTableViewCell {
+      filtersTableViewCell.filter?.isCollapsed = false
+      tableView.reloadSections( NSIndexSet(index: filtersTableViewCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
     }
   }
 
@@ -108,24 +108,25 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
 
       return cell
     } else {
-      let cell = tableView.dequeueReusableCellWithIdentifier("SwitchCell") as! SwitchCell
+      let cell = tableView.dequeueReusableCellWithIdentifier(filter.reusableCellIdentifier) as! FiltersTableViewCell
       cell.filterPreferences = filterPreferences
       cell.filterCategory = filter.categories[indexPath.row]
-      cell.delegate = self
       cell.sectionIndex = indexPath.section
+      cell.delegate = self
+
       return cell
     }
   }
 }
 
 
-extension FiltersViewController: SwitchCellDelegate {
-  func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
-    filterPreferences.updateFilterPreference(switchCell.filterCategory!, isOn: value)
-    let filter = switchCell.filterCategory!.filter
+extension FiltersViewController: FiltersTableViewCellDelegate {
+  func filtersTableViewCell(filtersTableViewCell: FiltersTableViewCell, didChangeValue value: Bool) {
+    filterPreferences.updateFilterPreference(filtersTableViewCell.filterCategory!, isOn: value)
+    let filter = filtersTableViewCell.filterCategory!.filter
     if filter.isCollapsible {
       filter.isCollapsed = true
-      tableView.reloadSections( NSIndexSet(index: switchCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
+      tableView.reloadSections( NSIndexSet(index: filtersTableViewCell.sectionIndex!), withRowAnimation: UITableViewRowAnimation.Automatic)
     } else {
       tableView.reloadData()
     }

@@ -28,6 +28,7 @@ class DistanceFilter: Filter {
     self.categories = categories
     self.isCollapsible = true
     self.isCollapsed = true
+    self.reusableCellIdentifier = "CheckboxCell"
   }
 
   private class func milesToMeters(miles: Double) -> Double {

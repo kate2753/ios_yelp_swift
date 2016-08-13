@@ -8,18 +8,13 @@
 
 import UIKit
 
-class CollapsedFilterCell: UITableViewCell {
+class CollapsedFilterCell: FiltersTableViewCell {
 
   @IBOutlet weak var selectedFilterTitle: UILabel!
 
-  var filterPreferences: FilterPreferences?
-  var sectionIndex: Int?
-
-  weak var filter: Filter? {
-    didSet {
-      if let filter = filter {
-        selectedFilterTitle.text = filterPreferences?.getSelectedCategoryTitle(filter)
-      }
+  override func onFilterChanged() {
+    if let filter = filter {
+      selectedFilterTitle.text = filterPreferences?.getSelectedCategoryTitle(filter)
     }
   }
 

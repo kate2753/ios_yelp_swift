@@ -186,18 +186,53 @@
                                             <outlet property="switchLabel" destination="7nX-Oj-W7t" id="r6C-xB-A77"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollapsedFilterCell" id="6X9-bh-jiH" customClass="CollapsedFilterCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CheckboxCell" id="QeE-Bk-0zc" customClass="CheckboxCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="167" width="320" height="53"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QeE-Bk-0zc" id="5DX-g8-kw4">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest Rated" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyf-gP-3Gu">
+                                                    <rect key="frame" x="15" y="10" width="109" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CircleOutline" translatesAutoresizingMaskIntoConstraints="NO" id="N1T-WH-l8S">
+                                                    <rect key="frame" x="273" y="10" width="32" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="Bf5-W6-3cN"/>
+                                                        <constraint firstAttribute="width" constant="32" id="zcI-o1-RcJ"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="N1T-WH-l8S" firstAttribute="centerY" secondItem="Lyf-gP-3Gu" secondAttribute="centerY" id="0AR-8N-2HZ"/>
+                                                <constraint firstItem="N1T-WH-l8S" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Lyf-gP-3Gu" secondAttribute="trailing" constant="15" id="Ckm-Kt-hmC"/>
+                                                <constraint firstAttribute="bottom" secondItem="Lyf-gP-3Gu" secondAttribute="bottom" constant="10" id="E7r-ec-hBF"/>
+                                                <constraint firstItem="Lyf-gP-3Gu" firstAttribute="leading" secondItem="5DX-g8-kw4" secondAttribute="leading" constant="15" id="cnI-Qz-IUw"/>
+                                                <constraint firstAttribute="trailing" secondItem="N1T-WH-l8S" secondAttribute="trailing" constant="15" id="tQb-85-FQV"/>
+                                                <constraint firstItem="Lyf-gP-3Gu" firstAttribute="top" secondItem="5DX-g8-kw4" secondAttribute="top" constant="10" id="yHp-qP-E9n"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxImageView" destination="N1T-WH-l8S" id="gaF-Cu-JFe"/>
+                                            <outlet property="filterTitleLabel" destination="Lyf-gP-3Gu" id="Rhm-rv-Bja"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollapsedFilterCell" id="6X9-bh-jiH" customClass="CollapsedFilterCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="220" width="320" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6X9-bh-jiH" id="Nfe-qf-TUs">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expand" translatesAutoresizingMaskIntoConstraints="NO" id="85w-FX-zyw">
-                                                    <rect key="frame" x="285" y="16" width="20" height="20"/>
+                                                    <rect key="frame" x="273" y="10" width="32" height="32"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="20" id="6bu-er-0xM"/>
-                                                        <constraint firstAttribute="height" constant="20" id="Pk7-xP-rg2"/>
+                                                        <constraint firstAttribute="width" constant="32" id="6bu-er-0xM"/>
+                                                        <constraint firstAttribute="height" constant="32" id="Pk7-xP-rg2"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest Rated" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTq-Nm-nqA">
@@ -221,7 +256,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SeeAllCell" id="OjD-hw-yWL" customClass="SeeAllCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="220" width="320" height="53"/>
+                                        <rect key="frame" x="0.0" y="273" width="320" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OjD-hw-yWL" id="Xm7-CZ-qHX">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
@@ -310,6 +345,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CircleOutline" width="16" height="16"/>
         <image name="Expand" width="16" height="16"/>
     </resources>
 </document>
