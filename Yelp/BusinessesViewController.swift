@@ -42,9 +42,13 @@ class BusinessesViewController: UIViewController {
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     let navigationController = segue.destinationViewController as! UINavigationController
-    let filtersViewController = navigationController.topViewController as! FiltersViewController
-    filtersViewController.delegate = self
-    filtersViewController.filterPreferences = filterPreferences
+    if let filtersViewController = navigationController.topViewController as? FiltersViewController {
+      filtersViewController.delegate = self
+      filtersViewController.filterPreferences = filterPreferences
+    } else if let mapViewController = navigationController.topViewController as? MapViewController {
+      mapViewController.filterPreferences = filterPreferences
+      mapViewController.businesses = businesses
+    }
   }
 
   // MARK: - Private members
@@ -56,9 +60,9 @@ class BusinessesViewController: UIViewController {
       categories: filterPreferences.categories,
       deals: filterPreferences.deals,
       distance: filterPreferences.distance) {
-      (businesses: [Business]!, error: NSError!) -> Void in
-      self.businesses = businesses
-      self.tableView.reloadData()
+        (businesses: [Business]!, error: NSError!) -> Void in
+        self.businesses = businesses
+        self.tableView.reloadData()
     }
   }
 }

@@ -27,6 +27,7 @@
 		C54F84801D5E9073007BD8B0 /* FiltersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F847F1D5E9073007BD8B0 /* FiltersTableViewCell.swift */; };
 		C54F84821D5E9451007BD8B0 /* CollapsedFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F84811D5E9451007BD8B0 /* CollapsedFilterCell.swift */; };
 		C54F84841D5E950C007BD8B0 /* CheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F84831D5E950C007BD8B0 /* CheckboxCell.swift */; };
+		C54F84881D5ECA96007BD8B0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F84871D5ECA96007BD8B0 /* MapViewController.swift */; };
 		C5D988D31D5AA3EB0069690C /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D988D21D5AA3EB0069690C /* BusinessCell.swift */; };
 		C5D988D51D5AB61D0069690C /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D988D41D5AB61D0069690C /* SwitchCell.swift */; };
 		C5D988D71D5AB8100069690C /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D988D61D5AB8100069690C /* FiltersViewController.swift */; };
@@ -72,6 +73,7 @@
 		C54F847F1D5E9073007BD8B0 /* FiltersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersTableViewCell.swift; sourceTree = "<group>"; };
 		C54F84811D5E9451007BD8B0 /* CollapsedFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollapsedFilterCell.swift; sourceTree = "<group>"; };
 		C54F84831D5E950C007BD8B0 /* CheckboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxCell.swift; sourceTree = "<group>"; };
+		C54F84871D5ECA96007BD8B0 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C5D988D21D5AA3EB0069690C /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		C5D988D41D5AB61D0069690C /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		C5D988D61D5AB8100069690C /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		22AAAA9D1AEA1EC600A544AF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C54F84871D5ECA96007BD8B0 /* MapViewController.swift */,
 				22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */,
 				C5D988D61D5AB8100069690C /* FiltersViewController.swift */,
 			);
@@ -442,6 +445,7 @@
 				C5D988D31D5AA3EB0069690C /* BusinessCell.swift in Sources */,
 				C54F84261D5E5FD2007BD8B0 /* SeeAllCell.swift in Sources */,
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
+				C54F84881D5ECA96007BD8B0 /* MapViewController.swift in Sources */,
 				C54F84801D5E9073007BD8B0 /* FiltersTableViewCell.swift in Sources */,
 				C5D988D71D5AB8100069690C /* FiltersViewController.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
