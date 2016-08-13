@@ -31,7 +31,6 @@ class FiltersViewController: UIViewController {
     tableView.dataSource = self
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 200
-    tableView.separatorInset = UIEdgeInsetsZero
   }
 
   override func didReceiveMemoryWarning() {
@@ -66,6 +65,16 @@ class FiltersViewController: UIViewController {
 extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return filters.count
+  }
+
+  func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let titleLabel = UILabel()
+    titleLabel.frame = tableView.frame
+    titleLabel.text = filters[section].title
+    titleLabel.font = UIFont.boldSystemFontOfSize(16.0)
+    titleLabel.sizeToFit()
+
+    return titleLabel
   }
 
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -118,7 +127,6 @@ extension FiltersViewController: UITableViewDelegate, UITableViewDataSource {
     }
   }
 }
-
 
 extension FiltersViewController: FiltersTableViewCellDelegate {
   func filtersTableViewCell(filtersTableViewCell: FiltersTableViewCell, didChangeValue value: Bool) {
